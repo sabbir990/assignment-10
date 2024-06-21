@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 
 export default function Navbar() {
@@ -15,7 +16,7 @@ export default function Navbar() {
                             <li className='font-playWrite'><a>All Tourist Spot</a></li>
                             <li className='font-playWrite'><a>Add Tourist Spot</a></li>
                             <li className='font-playWrite'><a>My List</a></li>
-                            <li className='font-playWrite'><a>Register</a></li>
+                            <li className='font-playWrite'><a>Login</a></li>
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl font-playWrite">TM-Website</a>
@@ -26,7 +27,7 @@ export default function Navbar() {
                         <li className='font-playWrite'><a>All Tourist Spot</a></li>
                         <li className='font-playWrite'><a>Add Tourist Spot</a></li>
                         <li className='font-playWrite'><a>My List</a></li>
-                        <li className='font-playWrite'><a>Register</a></li>
+                        <li className='font-playWrite'><NavLink to={'/login'}>Login</NavLink></li>
                     </ul>
                 </div>
                 <div className="navbar-end pr-4">
