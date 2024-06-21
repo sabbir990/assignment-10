@@ -1,14 +1,62 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../Auth Provider/AuthProvider'
+import Swal from 'sweetalert2';
 
 export default function RegisterPage() {
+    const { createUser } = useContext(AuthContext);
+
+    const handleRegisterSubmit = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        if (!password.length > 5) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password should be at least 6 characters",
+            });
+            return;
+        }
+        if (!/[A-Z]/.test(password)) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must have a Uppercase letter",
+            });
+            return;
+        }
+        if (!/[a-z]/.test(password)) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password must have a lowercase letter",
+            });
+            return;
+        }
+
+        createUser(email, password).then(result => {
+            if (result.user) {
+                Swal.fire({
+                    title: "Done!",
+                    text: "User created successfully",
+                    icon: "success"
+                });
+            }
+        })
+    }
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 pt-8 text-center">
                         <h1 className='font-bold font-playWrite underline text-4xl'>Register Now</h1>
-                        <form className="card-body font-playWrite font-bold">
+                        <form className="card-body font-playWrite font-bold" onSubmit={handleRegisterSubmit}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
