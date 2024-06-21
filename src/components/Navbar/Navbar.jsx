@@ -21,7 +21,7 @@ export default function Navbar() {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li className='font-playWrite'><NavLink to={'/'}>Home</NavLink></li>
                             <li className='font-playWrite'><a>All Tourist Spot</a></li>
-                            <li className='font-playWrite'><a>Add Tourist Spot</a></li>
+                            <li className='font-playWrite'><NavLink to={'/addSpot'}>Add Tourist Spot</NavLink></li>
                             <li className='font-playWrite'><a>My List</a></li>
                             <li className='font-playWrite'><a>Login</a></li>
                         </ul>
@@ -32,7 +32,7 @@ export default function Navbar() {
                     <ul className="menu menu-horizontal px-1">
                         <li className='font-playWrite'><NavLink to={'/'}>Home</NavLink></li>
                         <li className='font-playWrite'><a>All Tourist Spot</a></li>
-                        <li className='font-playWrite'><a>Add Tourist Spot</a></li>
+                        <li className='font-playWrite'><NavLink to={'/addSpot'}>Add Tourist Spot</NavLink></li>
                         <li className='font-playWrite'><a>My List</a></li>
                         <li className='font-playWrite'><NavLink to={'/login'}>Login</NavLink></li>
                     </ul>

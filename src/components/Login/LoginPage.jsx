@@ -1,11 +1,14 @@
 import React, { useContext, useState } from 'react'
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Auth Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 export default function LoginPage() {
     const { loginUser, googleLogin, facebookLogin, setUser } = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate()
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
@@ -21,6 +24,7 @@ export default function LoginPage() {
                 text: "You're successfully logged in!",
                 icon: "success"
             });
+            navigate(location.state)
         }).catch(error => {
             Swal.fire({
                 icon: "error",
@@ -38,6 +42,7 @@ export default function LoginPage() {
                 text: "You're successfully logged in!",
                 icon: "success"
             });
+            navigate(location.state)
         }).catch(error => {
             Swal.fire({
                 icon: "error",
@@ -55,6 +60,7 @@ export default function LoginPage() {
                 text: "You're successfully logged in!",
                 icon: "success"
             });
+            navigate(location.state)
         }).catch(error => {
             Swal.fire({
                 icon: "error",
