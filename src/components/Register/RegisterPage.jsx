@@ -4,7 +4,8 @@ import { AuthContext } from '../Auth Provider/AuthProvider'
 import Swal from 'sweetalert2';
 
 export default function RegisterPage() {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, user } = useContext(AuthContext);
+    console.log(user)
 
     const handleRegisterSubmit = (event) => {
         event.preventDefault();

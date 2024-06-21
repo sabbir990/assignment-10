@@ -5,7 +5,6 @@ import { AuthContext } from '../Auth Provider/AuthProvider'
 
 export default function Navbar() {
     const {logOut, user, setUser} = useContext(AuthContext)
-    console.log(user)
     const handleLogOut = () => {
         logOut().then(result => {
             setUser(result.user)
@@ -42,7 +41,7 @@ export default function Navbar() {
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src={user ? user?.photoURL : "https://d20k9hx8rfk4nk.cloudfront.net/images/avatar.png"} />
+                                <img alt="Tailwind CSS Navbar component" src={user && user.photoURL ? user.photoURL : "https://d20k9hx8rfk4nk.cloudfront.net/images/avatar.png"} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-80">
