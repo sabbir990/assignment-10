@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Auth Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 export default function LoginPage() {
-    const {loginUser, googleLogin, facebookLogin, setUser} = useContext(AuthContext);
+    const { loginUser, googleLogin, facebookLogin, setUser } = useContext(AuthContext);
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
@@ -15,18 +16,51 @@ export default function LoginPage() {
 
         loginUser(email, password).then(result => {
             setUser(result.user)
+            Swal.fire({
+                title: "Well done!",
+                text: "You're successfully logged in!",
+                icon: "success"
+            });
+        }).catch(error => {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${error.message.split('/').slice(1)}`,
+            });
         })
     }
 
     const handleGoogleLogin = () => {
         googleLogin().then(result => {
             setUser(result.user)
+            Swal.fire({
+                title: "Well done!",
+                text: "You're successfully logged in!",
+                icon: "success"
+            });
+        }).catch(error => {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${error.message.split('/').slice(1)}`,
+            });
         })
     }
 
     const handleFacebookLogin = () => {
         facebookLogin().then(result => {
             setUser(result.user)
+            Swal.fire({
+                title: "Well done!",
+                text: "You're successfully logged in!",
+                icon: "success"
+            });
+        }).catch(error => {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${error.message.split('/').slice(1)}`,
+            });
         })
     }
     return (
