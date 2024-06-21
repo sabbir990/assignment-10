@@ -1,8 +1,16 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { AuthContext } from '../Auth Provider/AuthProvider'
 
 
 export default function Navbar() {
+    const {logOut, user, setUser} = useContext(AuthContext)
+    console.log(user)
+    const handleLogOut = () => {
+        logOut().then(result => {
+            setUser(result.user)
+        })
+    }
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -34,12 +42,12 @@ export default function Navbar() {
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                <img alt="Tailwind CSS Navbar component" src={user ? user?.photoURL : "https://d20k9hx8rfk4nk.cloudfront.net/images/avatar.png"} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-80">
-                            <p className='underline font-bold font-playWrite text-center'>sohelkhan01764284363@gmail.com</p>
-                            <li className='font-playWrite mt-4'><a>Logout</a></li>
+                            <p className='underline font-bold font-playWrite text-center'>{user?.email}</p>
+                            {user ? <li className='font-playWrite mt-4'><button onClick={handleLogOut}>Logout</button></li> : <li className='font-playWrite mt-4'><Link to={'/login'}>Login</Link></li>}
                         </ul>
                     </div>
                 </div>
