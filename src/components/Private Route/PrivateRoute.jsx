@@ -6,8 +6,6 @@ export default function PrivateRoute({children}) {
     const {user} = useContext(AuthContext);
     const location = useLocation();
 
-    console.log(location)
-
     if(user){
         return children
     }else{
