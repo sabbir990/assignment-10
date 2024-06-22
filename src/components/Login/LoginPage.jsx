@@ -8,7 +8,7 @@ export default function LoginPage() {
     const { loginUser, googleLogin, facebookLogin, setUser } = useContext(AuthContext);
 
     const location = useLocation();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
@@ -24,7 +24,11 @@ export default function LoginPage() {
                 text: "You're successfully logged in!",
                 icon: "success"
             });
-            navigate(location.state)
+            if (location.state) {
+                navigate(location.state)
+            } else {
+                navigate('/')
+            }
         }).catch(error => {
             Swal.fire({
                 icon: "error",
@@ -42,7 +46,11 @@ export default function LoginPage() {
                 text: "You're successfully logged in!",
                 icon: "success"
             });
-            navigate(location.state)
+            if (location.state) {
+                navigate(location.state)
+            } else {
+                navigate('/')
+            }
         }).catch(error => {
             Swal.fire({
                 icon: "error",
@@ -60,7 +68,11 @@ export default function LoginPage() {
                 text: "You're successfully logged in!",
                 icon: "success"
             });
-            navigate(location.state)
+            if (location.state) {
+                navigate(location.state)
+            } else {
+                navigate('/')
+            }
         }).catch(error => {
             Swal.fire({
                 icon: "error",

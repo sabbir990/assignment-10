@@ -4,7 +4,7 @@ import { AuthContext } from '../Auth Provider/AuthProvider'
 
 
 export default function Navbar() {
-    const {logOut, user, setUser} = useContext(AuthContext)
+    const { logOut, user, setUser } = useContext(AuthContext)
     const handleLogOut = () => {
         logOut().then(result => {
             setUser(result?.user)
@@ -23,7 +23,8 @@ export default function Navbar() {
                             <li className='font-playWrite'><a>All Tourist Spot</a></li>
                             <li className='font-playWrite'><NavLink to={'/addSpot'}>Add Tourist Spot</NavLink></li>
                             <li className='font-playWrite'><a>My List</a></li>
-                            <li className='font-playWrite'><a>Login</a></li>
+                            {!user ? <li className='font-playWrite'><NavLink to={'/login'}>Login</NavLink></li> : ""}
+
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl font-playWrite">TM-Website</a>
@@ -34,7 +35,7 @@ export default function Navbar() {
                         <li className='font-playWrite'><a>All Tourist Spot</a></li>
                         <li className='font-playWrite'><NavLink to={'/addSpot'}>Add Tourist Spot</NavLink></li>
                         <li className='font-playWrite'><a>My List</a></li>
-                        <li className='font-playWrite'><NavLink to={'/login'}>Login</NavLink></li>
+                        {!user ? <li className='font-playWrite'><NavLink to={'/login'}>Login</NavLink></li> : ""}
                     </ul>
                 </div>
                 <div className="navbar-end pr-4">

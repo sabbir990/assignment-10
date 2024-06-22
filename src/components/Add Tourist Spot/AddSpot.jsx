@@ -1,7 +1,10 @@
 import React from 'react'
 import { MdAddLocationAlt } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export default function AddSpot() {
+  const navigate = useNavigate()
   const handleAddSpotSubmit = (event) => {
     event.preventDefault();
 
@@ -18,19 +21,33 @@ export default function AddSpot() {
     const email = form.email.value;
     const name = form.name.value;
 
-    const spot = {image, spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorPerYear, email, name}
-    console.log(spot)
+    const spot = { image, spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorPerYear, email, name }
 
     fetch(`http://localhost:5000/spots`, {
-      method : 'POST',
-      headers : {
-        'content-type' : 'application/json'
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
       },
-      body : JSON.stringify(spot)
+      body: JSON.stringify(spot)
     }).then(res => {
       return res.json();
     }).then(result => {
-      console.log(result)
+      if (result.insertedId) {
+        Swal.fire({
+          title: "Done!",
+          text: "You've added a spot successfully",
+          icon: "success"
+        });
+
+        form.reset();
+        navigate('/')
+      }
+    }).catch(error => {
+      Swal.fire({
+        title: "Oops!",
+        text: "Something is wrong",
+        icon: "error"
+      });
     })
   }
   return (
