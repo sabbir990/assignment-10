@@ -47,9 +47,9 @@ export default function AllSpots() {
             </div>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mt-20'>
                 {
-                    allSpots && allSpots.map(spot => {
+                    allSpots ? allSpots.map(spot => {
                         return <SpotCard key={spot._id} id={spot._id} image={spot.image} spotName={spot.spotName} averageCost={spot.averageCost} totalVisitorPerYear={spot.totalVisitorPerYear} travelTime={spot.travelTime} seasonality={spot.seasonality} />
-                    })
+                    }) : <span className="loading loading-spinner loading-lg"></span>
                 }
             </div>
         </div>

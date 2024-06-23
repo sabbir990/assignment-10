@@ -67,7 +67,7 @@ export default function MyList() {
                         <th className='border text-center'>Actions</th>
                     </thead>
                     {
-                        mySpots && mySpots.map(spot => {
+                        mySpots ? mySpots.map(spot => {
                             return (
                                 <tbody className='border'>
                                     <td className='border text-center'>{spot.spotName}</td>
@@ -77,7 +77,7 @@ export default function MyList() {
                                     <td className='border text-center'><Link to={`/updateSpot/${spot._id}`}><button className='p-4' title='Update'><FaPen /></button></Link> | <button className='p-4 text-xl' title='Delete' onClick={() => handleDeleteSpot(spot._id)}><MdDeleteForever /></button></td>
                                 </tbody>
                             )
-                        })
+                        }) : <span className="loading loading-spinner loading-lg m-auto"></span>
                     }
                 </table>
             </div>

@@ -4,7 +4,7 @@ import { FaStarOfLife } from "react-icons/fa";
 import { AuthContext } from '../Auth Provider/AuthProvider';
 
 export default function TouristSpots() {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [spots, setSpots] = useState(null)
     useEffect(() => {
         fetch(`http://localhost:5000/spots/${user?.email}`).then(res => {
@@ -24,8 +24,8 @@ export default function TouristSpots() {
             </div>
             <div className='w-full grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4 mt-10'>
                 {
-                    spots && spots.map(spot => {
-                        return <SpotCard key={spot._id} id={spot._id} image={spot.image} spotName={spot.spotName} countryName={spot.countryName} location={spot.location} shortDescription={spot.shortDescription} averageCost={spot.averageCost} seasonality={spot.seasonality} travelTime={spot.travelTime} totalVisitorPerYear={spot.totalVisitorPerYear} email={spot.email} name={spot.name}/>
+                    !spots ? <span className="loading loading-spinner loading-lg m-auto"></span> : spots.map(spot => {
+                        return <SpotCard key={spot._id} id={spot._id} image={spot.image} spotName={spot.spotName} countryName={spot.countryName} location={spot.location} shortDescription={spot.shortDescription} averageCost={spot.averageCost} seasonality={spot.seasonality} travelTime={spot.travelTime} totalVisitorPerYear={spot.totalVisitorPerYear} email={spot.email} name={spot.name} />
                     })
                 }
             </div>
