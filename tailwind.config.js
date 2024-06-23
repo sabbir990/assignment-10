@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily : {
-        'playWrite' : ['Playwrite NZ', 'cursive']
+        'playWrite' : ['Playwrite NZ', 'cursive'],
+        'rubik' : ['Rubik', 'sans-serif']
       }
     },
   },
