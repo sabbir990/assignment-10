@@ -2,6 +2,7 @@ import React from 'react'
 import Banner from './Banner'
 import TouristSpots from '../Tourist spots section/TouristSpots'
 import Opportunities from '../Extra Sections/Opportunities'
+import SubscribeNow from '../Extra Sections/SubscribeNow'
 
 export default function Home() {
   return (
@@ -17,7 +18,9 @@ export default function Home() {
         <section>
           <Opportunities />
         </section>
-
+        <section>
+          <SubscribeNow />
+        </section>
     </div>
   )
 }
