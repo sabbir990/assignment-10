@@ -22,7 +22,7 @@ export default function Navbar() {
                             <li className='font-playWrite'><NavLink to={'/'}>Home</NavLink></li>
                             <li className='font-playWrite'><NavLink to={'/allSpots'}>All Tourist Spot</NavLink></li>
                             <li className='font-playWrite'><NavLink to={'/addSpot'}>Add Tourist Spot</NavLink></li>
-                            <li className='font-playWrite'><a>My List</a></li>
+                            <li className='font-playWrite'><NavLink to={'/myList'}>My List</NavLink></li>
                             {!user ? <li className='font-playWrite'><NavLink to={'/login'}>Login</NavLink></li> : ""}
 
                         </ul>
@@ -34,7 +34,7 @@ export default function Navbar() {
                         <li className='font-playWrite'><NavLink to={'/'}>Home</NavLink></li>
                         <li className='font-playWrite'><NavLink to={'/allSpots'}>All Tourist Spot</NavLink></li>
                         <li className='font-playWrite'><NavLink to={'/addSpot'}>Add Tourist Spot</NavLink></li>
-                        <li className='font-playWrite'><a>My List</a></li>
+                        <li className='font-playWrite'><NavLink to={'/myList'}>My List</NavLink></li>
                         {!user ? <li className='font-playWrite'><NavLink to={'/login'}>Login</NavLink></li> : ""}
                     </ul>
                 </div>
