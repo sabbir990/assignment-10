@@ -3,6 +3,7 @@ import { AuthContext } from '../Auth Provider/AuthProvider';
 import { MdDeleteForever } from "react-icons/md";
 import { FaPen } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export default function MyList() {
     const { user } = useContext(AuthContext)
@@ -16,8 +17,36 @@ export default function MyList() {
         })
     })
 
-    const handleUpdateSpot = (_id) => {
-        // console.log(_id)
+    const handleDeleteSpot = (_id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/deleteSpot/${_id}`, {
+                    method: 'DELETE'
+                }).then(res => {
+                    return res.json()
+                }).then(result => {
+                    if (result.deletedCount) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your spot has been deleted!",
+                            icon: "success"
+                        });
+
+                        const deletedSpot = mySpots.filter(spots => spots._id !== id)
+                        setMySpots(deletedSpot)
+                    }
+                })
+            }
+        });
+
     }
     return (
         <div className='p-4 font-playWrite flex flex-col items-center space-y-4'>
@@ -45,7 +74,7 @@ export default function MyList() {
                                     <td className='border text-center'>{spot.seasonality}</td>
                                     <td className='border text-center'>{spot.averageCost}</td>
                                     <td className='border text-center'>{spot.countryName}</td>
-                                    <td className='border text-center'><Link to={`/updateSpot/${spot._id}`}><button className='p-4' title='Update' onClick={() => handleUpdateSpot(spot._id)}><FaPen /></button></Link> | <button className='p-4 text-xl' title='Delete'><MdDeleteForever /></button></td>
+                                    <td className='border text-center'><Link to={`/updateSpot/${spot._id}`}><button className='p-4' title='Update'><FaPen /></button></Link> | <button className='p-4 text-xl' title='Delete' onClick={() => handleDeleteSpot(spot._id)}><MdDeleteForever /></button></td>
                                 </tbody>
                             )
                         })

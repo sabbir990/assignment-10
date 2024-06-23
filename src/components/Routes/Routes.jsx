@@ -52,8 +52,10 @@ const route = createBrowserRouter([
                 </PrivateRoute>
             },
             {
-                path : '/updateSpot/:id',
-                element : <UpdateSpot />
+                path: '/updateSpot/:id',
+                element: <PrivateRoute>
+                    <UpdateSpot />
+                </PrivateRoute>
             }
         ]
     }
