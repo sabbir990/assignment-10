@@ -14,6 +14,7 @@ export default function SpotCard({ id, image, spotName, countryName, location, s
           <p>{location}</p>
           <p>Visitors Per Year : {totalVisitorPerYear}</p>
           <p>Average Cost : {averageCost}</p>
+          <p>Travel Time : {travelTime}</p>
           <p className='badge badge-success'>{seasonality}</p>
           <p></p>
           <div className="card-actions justify-end">
