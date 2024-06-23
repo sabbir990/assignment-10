@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../Auth Provider/AuthProvider';
 import { MdDeleteForever } from "react-icons/md";
 import { FaPen } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 export default function MyList() {
     const { user } = useContext(AuthContext)
@@ -14,6 +15,10 @@ export default function MyList() {
             setMySpots(result)
         })
     })
+
+    const handleUpdateSpot = (_id) => {
+        // console.log(_id)
+    }
     return (
         <div className='p-4 font-playWrite flex flex-col items-center space-y-4'>
             <div className='text-center space-y-4'>
@@ -40,7 +45,7 @@ export default function MyList() {
                                     <td className='border text-center'>{spot.seasonality}</td>
                                     <td className='border text-center'>{spot.averageCost}</td>
                                     <td className='border text-center'>{spot.countryName}</td>
-                                    <td className='border text-center'><button className='p-4' title='Update'><FaPen /></button> | <button className='p-4 text-xl' title='Delete'><MdDeleteForever /></button></td>
+                                    <td className='border text-center'><Link to={`/updateSpot/${spot._id}`}><button className='p-4' title='Update' onClick={() => handleUpdateSpot(spot._id)}><FaPen /></button></Link> | <button className='p-4 text-xl' title='Delete'><MdDeleteForever /></button></td>
                                 </tbody>
                             )
                         })

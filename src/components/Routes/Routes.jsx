@@ -9,6 +9,7 @@ import PrivateRoute from '../Private Route/PrivateRoute'
 import SpotDetails from '../Spot Details/SpotDetails'
 import AllSpots from '../All Spots page/AllSpots'
 import MyList from '../My list/MyList'
+import UpdateSpot from '../Add Tourist Spot/UpdateSpot'
 
 const route = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ const route = createBrowserRouter([
                 element: <PrivateRoute>
                     <MyList />
                 </PrivateRoute>
+            },
+            {
+                path : '/updateSpot/:id',
+                element : <UpdateSpot />
             }
         ]
     }
