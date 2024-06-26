@@ -5,7 +5,7 @@ export default function AllSpots() {
     const [allSpots, setAllSpots] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allSpots').then(res => {
+        fetch('https://assignemnt-10-server-five.vercel.app/allSpots').then(res => {
             return res.json()
         }).then(result => {
             console.log(result)

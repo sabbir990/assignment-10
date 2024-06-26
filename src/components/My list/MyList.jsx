@@ -10,7 +10,7 @@ export default function MyList() {
     const [mySpots, setMySpots] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/spots/${user.email}`).then(res => {
+        fetch(`https://assignemnt-10-server-five.vercel.app/spots/${user.email}`).then(res => {
             return res.json()
         }).then(result => {
             setMySpots(result)
@@ -28,7 +28,7 @@ export default function MyList() {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/deleteSpot/${_id}`, {
+                fetch(`https://assignemnt-10-server-five.vercel.app/deleteSpot/${_id}`, {
                     method: 'DELETE'
                 }).then(res => {
                     return res.json()

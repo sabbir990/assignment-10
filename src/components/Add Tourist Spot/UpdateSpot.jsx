@@ -9,7 +9,7 @@ export default function UpdateSpot() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/updateableSpot/${id}`).then(res => {
+        fetch(`https://assignemnt-10-server-five.vercel.app/updateableSpot/${id}`).then(res => {
             return res.json()
         }).then(result => {
             setUpdatableSpot(result);
@@ -34,7 +34,7 @@ export default function UpdateSpot() {
 
         const spot = { image, spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorPerYear, email, name }
 
-        fetch(`http://localhost:5000/updateSpot/${id}`, {
+        fetch(`https://assignemnt-10-server-five.vercel.app/updateSpot/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

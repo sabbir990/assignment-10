@@ -10,7 +10,7 @@ export default function SpotDetails() {
     const { id } = useParams()
 
     useState(() => {
-        fetch(`http://localhost:5000/singleSpot/${id}`).then(res => {
+        fetch(`https://assignemnt-10-server-five.vercel.app/singleSpot/${id}`).then(res => {
             return res.json();
         }).then(result => {
             setSingleSpot(result);

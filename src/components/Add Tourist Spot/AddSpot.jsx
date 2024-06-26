@@ -23,7 +23,7 @@ export default function AddSpot() {
 
     const spot = { image, spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, totalVisitorPerYear, email, name }
 
-    fetch(`http://localhost:5000/spots`, {
+    fetch(`https://assignemnt-10-server-five.vercel.app/spots`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

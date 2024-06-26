@@ -7,7 +7,7 @@ export default function TouristSpots() {
     const { user } = useContext(AuthContext);
     const [spots, setSpots] = useState(null)
     useEffect(() => {
-        fetch(`http://localhost:5000/spots/${user?.email}`).then(res => {
+        fetch(`https://assignemnt-10-server-five.vercel.app/spots/${user?.email}`).then(res => {
             return res.json();
         }).then(result => {
             setSpots(result)
